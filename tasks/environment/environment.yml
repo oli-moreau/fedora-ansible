@@ -1,0 +1,13 @@
+---
+  - name: Include appearance task
+    ansible.builtin.include_tasks:
+      file: appearance/theme.yml
+
+  - name: Include dconf tasks
+    ansible.builtin.include_tasks:
+      file: "{{ item }}"
+    loop:
+      - "dconf/behaviour.yml"
+      - "dconf/interface.yml"
+      - "dconf/keyboard.yml"
+      - "dconf/overview.yml"

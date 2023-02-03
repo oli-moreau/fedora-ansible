@@ -1,0 +1,15 @@
+---
+  - name: Configure interface
+    community.general.dconf:
+      key: "{{ interface_item.key }}"
+      value: "{{ interface_item.value | string }}"
+      state: present
+    loop:
+      - { key: "/org/gnome/desktop/interface/icon-theme", value: "'Tela'" }
+      - { key: "/org/gnome/desktop/interface/gtk-theme", value: "'adw-gtk3-dark'" }
+      - { key: "/org/gnome/desktop/interface/monospace-font-name", value: "'Source Code Pro 12'" }
+      - { key: "/org/gnome/desktop/interface/font-hinting", value: "'full'" }
+      - { key: "/org/gnome/desktop/interface/font-antialiasing", value: "'rgba'" }
+      - { key: "/org/gnome/desktop/interface/enable-hot-corners", value: "false" }
+    loop_control:
+      loop_var: interface_item

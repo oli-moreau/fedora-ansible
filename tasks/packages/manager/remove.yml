@@ -1,0 +1,17 @@
+---
+  - name: Remove pre-installed packages
+    ansible.builtin.dnf:
+      name:
+        - gnome-boxes
+        - gnome-calendar
+        - gnome-clocks
+        - gnome-contacts
+        - gnome-maps
+        - gnome-tour
+        - gnome-weather
+        - libreoffice-calc
+        - libreoffice-impress
+        - rhythmbox
+      state: absent
+      autoremove: yes
+    become: yes

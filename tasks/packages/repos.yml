@@ -1,0 +1,35 @@
+---
+
+  - name: Getting RPM Fusion packages
+    get_url:
+      url: "{{ item.url }}"
+      dest: "{{ playbook_dir }}"
+    loop:
+      - url: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm"
+      - url: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm"
+    register: rpmfusion
+
+  - name: Enabling RPM Fusion
+    dnf:
+      name: "{{ item }}"
+      disable_gpg_check: true
+      state: present
+    with_items:
+      - "{{ playbook_dir }}/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm"
+      - "{{ playbook_dir }}/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm"
+    become: yes
+
+  - name: Removing RPM Fusion packages
+    file:
+      path: "{{ playbook_dir }}/{{ item }}"
+      state: absent
+    with_items:
+      - "rpmfusion-free-release-{{ fedora_current }}.noarch.rpm"
+      - "rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm"
+
+  - name: Adding Flathub
+    community.general.flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      method: user

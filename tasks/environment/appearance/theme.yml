@@ -1,0 +1,21 @@
+---
+  - name: Download and extract adw-gtk3 theme
+    ansible.builtin.unarchive:
+      src: https://github.com/lassekongo83/adw-gtk3/releases/download/v4.2/adw-gtk3v4-2.tar.xz
+      dest: "/usr/share/themes/"
+      remote_src: yes
+    become: yes
+
+  - name: Download and extract Tela icons
+    ansible.builtin.unarchive:
+      src: https://github.com/vinceliuice/Tela-icon-theme/archive/refs/heads/master.zip
+      dest: "{{ playbook_dir }}"
+      remote_src: yes
+
+  - name: Run the Tela installation script
+    ansible.builtin.shell: Tela-icon-theme-master/install.sh
+
+  - name: Remove files for manual download
+    file:
+      path: "{{ playbook_dir }}/Tela-icon-theme-master"
+      state: absent

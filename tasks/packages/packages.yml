@@ -1,0 +1,20 @@
+---
+  - name: Include repos.yml
+    ansible.builtin.include_tasks:
+      file: repos.yml
+
+  - name: Include manager/remove.yml
+    ansible.builtin.include_tasks:
+      file: manager/remove.yml
+
+  - name: Include manager/install.yml
+    ansible.builtin.include_tasks:
+      file: manager/install.yml
+
+  - name: Include manual/install.yml
+    ansible.builtin.include_tasks:
+      file: manual/install.yml
+
+  - name: Include manual/remove.yml
+    ansible.builtin.include_tasks:
+      file: manual/remove.yml

@@ -1,0 +1,24 @@
+---
+  - name: Install from package manager
+    ansible.builtin.dnf:
+      name:
+        - blender
+        - filezilla
+        - gcolor3
+        - gnome-console
+        - gnome-tweaks
+        - intel-media-driver
+        - nodejs
+        - transmission-gtk
+        - vlc
+      state: latest
+    become: yes
+
+  - name: Install Flatpak apps
+    community.general.flatpak:
+      name:
+        - com.github.GradienceTeam.Gradience
+        - sh.cider.Cider
+        - com.mattjakeman.ExtensionManager
+      state: present
+      method: user

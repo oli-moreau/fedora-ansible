@@ -1,0 +1,15 @@
+---
+  - name: Configure keyboard
+    community.general.dconf:
+      key: "{{ keyboard_item.key }}"
+      value: "{{ keyboard_item.value | string }}"
+      state: present
+    loop:
+      - { key: "/org/gnome/desktop/input-sources/sources", value: "[('xkb', 'us'), ('xkb', 'ca')]" }
+      - { key: "/org/gnome/settings-daemon/plugins/media-keys/home", value: "['<Super>e']" }
+      - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings", value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']" }
+      - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "'<Control><Alt>t'" }
+      - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'kgx'" }
+      - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "'Console'" }
+    loop_control:
+      loop_var: keyboard_item

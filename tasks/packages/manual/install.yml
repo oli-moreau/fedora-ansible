@@ -1,0 +1,57 @@
+---
+  - name: Get Chrome RPM
+    get_url:
+      url: "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+      dest: "{{ playbook_dir }}"
+
+  - name: Install Chrome
+    dnf:
+      name: "google-chrome-stable_current_x86_64.rpm"
+      disable_gpg_check: true
+      state: present
+    become: yes
+
+  - name: Import VSCode key
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://packages.microsoft.com/keys/microsoft.asc
+    become: yes
+
+  - name: Create vscode.repo.j2 file
+    copy:
+      dest: "{{ playbook_dir }}/vscode.repo.j2"
+      content: |
+        [code]
+        name=Visual Studio Code
+        baseurl=https://packages.microsoft.com/yumrepos/vscode
+        enabled=1
+        gpgcheck=1
+        gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+      mode: 0644
+
+  - name: Create the Visual Studio Code repository file
+    template:
+      src: "vscode.repo.j2"
+      dest: "/etc/yum.repos.d/vscode.repo"
+      owner: root
+      group: root
+      mode: 0644
+    become: yes
+
+  - name: Install VSCode
+    ansible.builtin.dnf:
+      name: code
+      state: latest
+    become: yes
+
+  - name: Getting GitKraken
+    get_url:
+      url: "https://release.axocdn.com/linux/gitkraken-amd64.rpm"
+      dest: "{{ playbook_dir }}"
+
+  - name: Installing GitKraken
+    dnf:
+      name: "gitkraken-amd64.rpm"
+      disable_gpg_check: true
+      state: present
+    become: yes

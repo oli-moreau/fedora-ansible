@@ -1,0 +1,29 @@
+---
+- name: Fedora Workstation 37 Setup
+  hosts: localhost
+
+  vars_files:
+    - vars/vars.yml
+
+  tasks:
+  - name: Check for updates
+    ansible.builtin.dnf:
+      name: '*'
+      state: latest
+    become: yes
+
+  - name: Set hostname
+    ansible.builtin.hostname:
+      name: "{{ set_hostname }}"
+
+  - name: Include power task
+    ansible.builtin.include_tasks:
+      file: tasks/environment/dconf/power.yml
+
+  - name: Include packages task
+    ansible.builtin.include_tasks:
+      file: tasks/packages/packages.yml
+
+  - name: Include environment task
+    ansible.builtin.include_tasks:
+      file: tasks/environment/environment.yml

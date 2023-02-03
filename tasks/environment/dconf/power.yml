@@ -1,0 +1,16 @@
+---
+  - name: Configure power options
+    community.general.dconf:
+      key: "{{ power_item.key }}"
+      value: "{{ power_item.value | string }}"
+      state: present
+    loop:
+      - { key: "/org/gnome/settings-daemon/plugins/power/idle-dim", value: "false" }
+      - { key: "/org/gnome/desktop/session/idle-delay", value: "uint32 0" }
+      - { key: "/org/gnome/settings-daemon/plugins/power/power-saver-profile-on-low-battery", value: "false" }
+      - { key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type", value: "'nothing'" }
+      - { key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type", value: "'nothing'" }
+      - { key: "/org/gnome/settings-daemon/plugins/power/power-button-action", value: "'interactive'" }
+      - { key: "/org/gnome/desktop/interface/show-battery-percentage", value: "true" }
+    loop_control:
+      loop_var: power_item

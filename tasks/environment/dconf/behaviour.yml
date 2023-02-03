@@ -1,0 +1,14 @@
+---
+  - name: Configure behaviour
+    community.general.dconf:
+      key: "{{ behaviour_item.key }}"
+      value: "{{ behaviour_item.value | string }}"
+      state: present
+    loop:
+      - { key: "/org/gnome/mutter/center-new-windows", value: "true" }
+      - { key: "/org/gnome/desktop/peripherals/touchpad/tap-to-click", value: "true" }
+      - { key: "/org/gnome/shell/app-switcher/current-workspace-only", value: "true" }
+      - { key: "/org/gnome/desktop/privacy/remember-recent-files", value: "false" }
+      - { key: "/org/freedesktop/tracker/miner/files/index-recursive-directories", value: "@as []" }
+    loop_control:
+      loop_var: behaviour_item
