@@ -8,6 +8,8 @@ In summary, here is what it does:
 - Adds custom keybinds
 - Applies a theme
 
+![Screenshot from 2023-02-03 09-57-12](https://user-images.githubusercontent.com/123499791/216639763-078b401a-a4c1-44a1-975f-dbdf729e46d6.png)
+
 ## Limitations
 - At this time, only Fedora 37 Workstation is supported
 - GNOME extensions have not yet been added to the automation process
