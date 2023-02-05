@@ -22,13 +22,13 @@ In summary, here is what it does:
 ## How to use
 Download the files
 ```bash
-$ git clone https://github.com/oli-moreau/fedora-ansible.git
+git clone https://github.com/oli-moreau/fedora-ansible.git
 ```
 Install the dependencies
 ```bash
-$ sudo dnf -y install ansible pip && pip install psutil && ansible-galaxy collection install community.general
+sudo dnf -y install ansible pip && pip install psutil && ansible-galaxy collection install community.general
 ```
 Run the script
 ```bash
-$ ansible-playbook main.yml --ask-become-pass
+ansible-playbook main.yml --ask-become-pass
 ```
