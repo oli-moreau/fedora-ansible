@@ -10,25 +10,28 @@ In summary, here is what it does:
 
 ![Screenshot from 2023-02-03 09-57-12](https://user-images.githubusercontent.com/123499791/216639763-078b401a-a4c1-44a1-975f-dbdf729e46d6.png)
 
+![Screenshot from 2023-02-05 09-20-33](https://user-images.githubusercontent.com/123499791/216827652-e8097f26-ff16-4323-8a44-d91ca67a57c3.png)
+
 ## Limitations
 - At this time, only Fedora 37 Workstation is supported
 - GNOME extensions have not yet been added to the automation process
 
 ## Theme
+Used "as is". No modifications are made during the configuration process.
 - [Tela icon theme](https://github.com/vinceliuice/Tela-icon-theme)
 - [Adwaita Gtk3](https://github.com/lassekongo83/adw-gtk3)
-- Wallpaper is "PastelHills", one of the default wallpapers from the Fedora 37 KDE spin
+- [Wallpaper](https://github.com/KDE/plasma-workspace-wallpapers/blob/master/PastelHills/contents/images/3200x2000.jpg)
 
 ## How to use
 Download the files
 ```bash
-$ git clone https://github.com/oli-moreau/fedora-ansible.git
+git clone https://github.com/oli-moreau/fedora-ansible.git
 ```
 Install the dependencies
 ```bash
-$ sudo dnf -y install ansible pip && pip install psutil && ansible-galaxy collection install community.general
+sudo dnf -y install ansible pip && pip install psutil && ansible-galaxy collection install community.general
 ```
 Run the script
 ```bash
-$ ansible-playbook main.yml --ask-become-pass
+ansible-playbook main.yml --ask-become-pass
 ```
