@@ -1,0 +1,6 @@
+---
+  - name: Disable NetworkManager-wait-online
+    ansible.builtin.systemd:
+      name: NetworkManager-wait-online
+      enabled: false
+    become: yes
