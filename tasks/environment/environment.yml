@@ -11,3 +11,4 @@
       - "dconf/interface.yml"
       - "dconf/keyboard.yml"
       - "dconf/overview.yml"
+      - "services/services.yml"
