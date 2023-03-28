@@ -1,5 +1,5 @@
 ---
-- name: Fedora Workstation 37 Setup
+- name: Fedora Workstation 38 Beta Setup
   hosts: localhost
 
   vars_files:

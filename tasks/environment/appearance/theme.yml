@@ -1,7 +1,7 @@
 ---
   - name: Download and extract adw-gtk3 theme
     ansible.builtin.unarchive:
-      src: https://github.com/lassekongo83/adw-gtk3/releases/download/v4.2/adw-gtk3v4-2.tar.xz
+      src: "{{ adw_gtk3 }}"
       dest: "/usr/share/themes/"
       remote_src: yes
     become: yes

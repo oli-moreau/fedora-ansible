@@ -1,4 +1,4 @@
-# Fedora 37 Workstation with Ansible
+# Fedora 38 Beta Workstation with Ansible
 This is a small Ansible project that quickly set up my Fedora 37 Workstation. As I frequently experiment with various OSes, I find this project quite handy during the configuration process.
 
 In summary, here is what it does:
